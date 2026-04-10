@@ -6,8 +6,6 @@ import java.util.List;
 public class Employe extends Personne{
     private int numeroEmploye;
     private String dateEmbauche;
-    private List<Vol> volsAffectes = new ArrayList<>();
-
     public Employe(int identifiant, String nom, String adresse, int contact, int numeroEmploye, String dateEmbauche){
         super(identifiant, nom, adresse, contact);
         this.numeroEmploye = numeroEmploye;
