@@ -1,15 +1,16 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.*;
+import java.time.LocalDateTime;
 
 public class Vol {
     public int numeroVol;
     private String origine;
     private String destination;
-    private String dateHeureDepart;
-    private String dateHeureArrivee;
+    private LocalDateTime dateHeureDepart;
+    private LocalDateTime dateHeureArrivee;
     private String Etat;
-    public Vol(int numeroVol, String origine, String destination, String dateHeureDepart, String dateHeureArrivee){
+    public Vol(int numeroVol, String origine, String destination, LocalDateTime dateHeureDepart, LocalDateTime dateHeureArrivee){
         this.numeroVol = numeroVol;
         this.origine = origine;
         this.destination = destination;
@@ -18,7 +19,7 @@ public class Vol {
         this.Etat = "Planifié";
     }
 
-    public void planifierVol(int numeroVol, String origine, String destination, String dateHeureDepart, String dateHeureArrivee){
+    public void planifierVol(int numeroVol, String origine, String destination, LocalDateTime dateHeureDepart, LocalDateTime dateHeureArrivee){
        this.numeroVol = numeroVol;
        this.origine = origine;
        this.destination = destination;
