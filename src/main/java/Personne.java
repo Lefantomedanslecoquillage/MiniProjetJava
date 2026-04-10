@@ -1,6 +1,6 @@
 public class Personne{
     private int identifiant;
-    private String nom;
+    protected String nom;
     private String adresse;
     private int contact;
 
