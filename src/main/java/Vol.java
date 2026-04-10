@@ -9,10 +9,9 @@ public class Vol {
     private String dateHeureDepart;
     private String dateHeureArrivee;
     private String Etat;
-
+    Map<Integer, List<String>> vol = new HashMap<>();
 
     public void planifierVol(int numeroVol, String origine, String destination, String dateHeureDepart, String dateHeureArrivee){
-        Map<Integer, List<String>> vol = new HashMap<>();
         List<String> detailsVol = new ArrayList<>();
         detailsVol.add(origine);
         detailsVol.add(destination);
