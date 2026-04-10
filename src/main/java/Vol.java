@@ -9,6 +9,14 @@ public class Vol {
     private String dateHeureDepart;
     private String dateHeureArrivee;
     private String Etat;
+    public Vol(int numeroVol, String origine, String destination, String dateHeureDepart, String dateHeureArrivee){
+        this.numeroVol = numeroVol;
+        this.origine = origine;
+        this.destination = destination;
+        this.dateHeureDepart = dateHeureDepart;
+        this.dateHeureArrivee = dateHeureArrivee;
+        this.Etat = "Planifié";
+    }
 
     public void planifierVol(int numeroVol, String origine, String destination, String dateHeureDepart, String dateHeureArrivee){
        this.numeroVol = numeroVol;

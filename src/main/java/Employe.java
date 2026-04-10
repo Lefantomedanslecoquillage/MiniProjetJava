@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+
+/*
 public class Employe extends Personne{
     private int numeroEmploye;
     private String dateEmbauche;
@@ -15,4 +17,4 @@ public class Employe extends Personne{
     public String getDateEmbauche(){return this.dateEmbauche;}
 
 }
-
+*/

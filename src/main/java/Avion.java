@@ -6,15 +6,9 @@ public class Avion {
     private String modele;
     private int capacite;
 
-    public void affecterVol(int immatriculation, int numeroVol){
-        Vol vol = new Vol();
-        this.immatriculation = immatriculation;
-        vol.numeroVol = numeroVol;
-    }
+    public Avion(int immatriculation, String modele, int capacite) {}
 
-    public void verifierDisponibilite(int immatriculation, int numeroVol){
-        Vol vol = new Vol();
-        this.immatriculation = immatriculation;
-        vol.numeroVol = numeroVol;
-    }
+
+
+
 }
