@@ -1,6 +1,6 @@
 public class Pilote extends Employe {
     private int licence;
-    private it heuresDeVol;
+    private int heuresDeVol;
     public Pilote(int identifiant){
         super(identifiant);
     }
