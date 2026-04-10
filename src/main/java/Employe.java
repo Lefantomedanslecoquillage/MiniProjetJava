@@ -1,12 +1,10 @@
 public class Employe extends Personne{
-    private int NumeroEmploye;
-    private String DateEmbauche;
-    public Employe(int Identifiant, String Nom, String Adresse, int Contact, int NumeroEmploye, String DateEmbauche){
-        super(Identifiant, Nom, Adresse, Contact);
-        this.NumeroEmploye = NumeroEmploye;
-        this.DateEmbauche = DateEmbauche;
+    private int numeroEmploye;
+    private String dateEmbauche;
+    public Employe(int identifiant){
+        super(identifiant, nom, adresse, contact);
+        this.numeroEmploye = numeroEmploye;
+        this.dateEmbauche = dateEmbauche;
     }
-
-
 }
 
