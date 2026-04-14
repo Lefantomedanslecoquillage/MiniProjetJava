@@ -10,6 +10,9 @@ public class Vol {
     private LocalDateTime dateHeureDepart;
     private LocalDateTime dateHeureArrivee;
     private String Etat;
+
+    private List<Passager> passagers = new ArrayList<>();
+
     public Vol(int numeroVol, String origine, String destination, LocalDateTime dateHeureDepart, LocalDateTime dateHeureArrivee){
         this.numeroVol = numeroVol;
         this.origine = origine;
@@ -35,6 +38,5 @@ public class Vol {
     }
 
 
-
-
+    public void ajouterPassager(Passager passager) {this.passagers.add(passager);}
 }
