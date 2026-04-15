@@ -1,25 +1,34 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Passager extends Personne{
+public class Passager extends Personne {
     private String passeport;
-    private List<Reservation> listeReservations = new ArrayList<>();
-    public Passager(int identifiant, String nom, String adresse, int contact, String passeport){
+    private List<Reservation> reservations = new ArrayList<>();
+
+    public Passager(String identifiant, String nom, String adresse, String contact, String passeport) {
         super(identifiant, nom, adresse, contact);
         this.passeport = passeport;
     }
 
     public Reservation reserverVol(Vol vol) {
-        Reservation res = new Reservation("RES-" + System.currentTimeMillis(), this, vol);
-        listeReservations.add(res);
-        return res;
+        Reservation reservation = new Reservation(this, vol);
+        reservation.confirmerReservation();
+        reservations.add(reservation);
+        vol.ajouterReservation(reservation);
+        return reservation;
     }
 
-    public void annulerReservation(String numeroReservation) {
-        listeReservations.removeIf(r -> r.getNumeroReservation().equals(numeroReservation));
+    public boolean annulerReservation(String numeroReservation) {
+        for (Reservation r : reservations) {
+            if (r.getNumeroReservation().equals(numeroReservation)) {
+                r.annulerReservation();
+                return true;
+            }
+        }
+        return false;
     }
 
     public List<Reservation> obtenirReservations() {
-        return listeReservations;
+        return reservations;
     }
 }

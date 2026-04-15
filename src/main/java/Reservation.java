@@ -1,22 +1,61 @@
 import java.time.LocalDate;
 
 public class Reservation {
+    private static int compteur = 1;
+
     private String numeroReservation;
     private LocalDate dateReservation;
     private String statut;
+
     private Passager passager;
     private Vol vol;
 
-    public Reservation(String numeroReservation, Passager passager, Vol vol) {
-        this.numeroReservation = numeroReservation;
+    public Reservation(Passager passager, Vol vol) {
+        this.numeroReservation = "R" + compteur++;
         this.dateReservation = LocalDate.now();
-        this.statut = "En attente";
+        this.statut = "EN_ATTENTE";
         this.passager = passager;
         this.vol = vol;
-        vol.ajouterPassager(passager);
+    }
+
+    public void confirmerReservation() {
+        this.statut = "CONFIRMEE";
+    }
+
+    public void annulerReservation() {
+        this.statut = "ANNULEE";
+    }
+
+    public void modifierReservation(Vol nouveauVol) {
+        if (nouveauVol != null) {
+            this.vol = nouveauVol;
+        }
     }
 
     public String getNumeroReservation() {
         return numeroReservation;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public Passager getPassager() {
+        return passager;
+    }
+
+    public Vol getVol() {
+        return vol;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "numeroReservation='" + numeroReservation + '\'' +
+                ", dateReservation=" + dateReservation +
+                ", statut='" + statut + '\'' +
+                ", passager=" + passager.getNom() +
+                ", vol=" + vol.getNumeroVol() +
+                '}';
     }
 }
