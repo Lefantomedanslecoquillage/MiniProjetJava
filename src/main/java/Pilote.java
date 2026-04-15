@@ -1,27 +1,28 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pilote extends Employe {
-    private int licence;
-    private String heuresDeVol;
-    private List<Vol> volsaffectes = new ArrayList<>();
+    private String licence;
+    private int heuresDeVol;
+    private List<Vol> vols = new ArrayList<>();
 
-    public Pilote(int identifiant, String nom, String adresse, int contact, int numeroEmploye, String dateEmbauche, int licence, String heuresDeVol){
+    public Pilote(String identifiant, String nom, String adresse, String contact,
+                  String numeroEmploye, LocalDate dateEmbauche,
+                  String licence, int heuresDeVol) {
         super(identifiant, nom, adresse, contact, numeroEmploye, dateEmbauche);
         this.licence = licence;
         this.heuresDeVol = heuresDeVol;
     }
 
-    public void affecterVol(Vol vol){
-        volsaffectes.add(vol);
+    public void affecterVol(Vol vol) {
+        if (vol != null && !vols.contains(vol)) {
+            vols.add(vol);
+            vol.setPilote(this);
+        }
     }
+
     public List<Vol> obtenirVol() {
-        return volsaffectes;
-    }
-
-
-    @Override
-    public String obtenirRole(){
-        return "Pilote";
+        return vols;
     }
 }

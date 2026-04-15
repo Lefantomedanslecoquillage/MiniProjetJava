@@ -6,6 +6,7 @@ import java.util.List;
 public class Employe extends Personne{
     private int numeroEmploye;
     private String dateEmbauche;
+    protected String role;
     public Employe(int identifiant, String nom, String adresse, int contact, int numeroEmploye, String dateEmbauche){
         super(identifiant, nom, adresse, contact);
         this.numeroEmploye = numeroEmploye;
@@ -19,7 +20,7 @@ public class Employe extends Personne{
 
 
     public String obtenirRole() {
-        return null;
+        ;return role;
     }
 }
 

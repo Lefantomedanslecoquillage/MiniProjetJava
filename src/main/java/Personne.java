@@ -1,18 +1,28 @@
-public class Personne{
-    private int identifiant;
-    private String nom;
-    private String adresse;
-    private int contact;
+public class Personne {
+    protected String identifiant;
+    protected String nom;
+    protected String adresse;
+    protected String contact;
 
-    public Personne(int identifiant, String nom, String adresse, int contact){
+    public Personne(String identifiant, String nom, String adresse, String contact) {
         this.identifiant = identifiant;
         this.nom = nom;
         this.adresse = adresse;
         this.contact = contact;
     }
 
-    public void obtenirInfos(){
-        System.out.println("L'identifiant de " + this.nom + " est " + this.identifiant + ". Son adresse est " + this.adresse + " et son contact est " + this.contact + ".");
+    public String ObtenirInfos() {
+        return "Identifiant: " + identifiant +
+                ", Nom: " + nom +
+                ", Adresse: " + adresse +
+                ", Contact: " + contact;
+    }
+
+    public String getIdentifiant() {
+        return identifiant;
+    }
+
+    public String getNom() {
+        return nom;
     }
 }
-

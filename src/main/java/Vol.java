@@ -1,42 +1,117 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Vol {
-    public int numeroVol;
-    private String origine;
-    private String destination;
+    private String numeroVol;
+    private Aeroport origine;
+    private Aeroport destination;
     private LocalDateTime dateHeureDepart;
     private LocalDateTime dateHeureArrivee;
-    private String Etat;
+    private String etat;
 
-    private List<Passager> passagers = new ArrayList<>();
+    private Avion avion;
+    private Pilote pilote;
+    private List<PersonnelCabine> personnelsCabine = new ArrayList<>();
+    private List<Reservation> reservations = new ArrayList<>();
 
-    public Vol(int numeroVol, String origine, String destination, LocalDateTime dateHeureDepart, LocalDateTime dateHeureArrivee){
+    public Vol(String numeroVol, Aeroport origine, Aeroport destination,
+               LocalDateTime dateHeureDepart, LocalDateTime dateHeureArrivee) {
         this.numeroVol = numeroVol;
         this.origine = origine;
         this.destination = destination;
         this.dateHeureDepart = dateHeureDepart;
         this.dateHeureArrivee = dateHeureArrivee;
-        this.Etat = "Planifié";
+        this.etat = "PLANIFIE";
     }
 
-    public void planifierVol(int numeroVol, String origine, String destination, LocalDateTime dateHeureDepart, LocalDateTime dateHeureArrivee){
-       this.numeroVol = numeroVol;
-       this.origine = origine;
-       this.destination = destination;
-       this.dateHeureDepart = dateHeureDepart;
-       this.dateHeureArrivee = dateHeureArrivee;
-       this.Etat = "Vol";
-
+    public void planifierVol() {
+        this.etat = "PLANIFIE";
+        if (origine != null) {
+            origine.affecterVol(this);
+        }
+        if (destination != null) {
+            destination.affecterVol(this);
+        }
     }
 
-    public void annulerVol(int numeroVol){
-        this.numeroVol = numeroVol;
-        this.Etat = "Annulé";
+    public void annulerVol() {
+        this.etat = "ANNULE";
     }
 
+    public void modifierVol(Aeroport origine, Aeroport destination,
+                            LocalDateTime dateHeureDepart, LocalDateTime dateHeureArrivee) {
+        this.origine = origine;
+        this.destination = destination;
+        this.dateHeureDepart = dateHeureDepart;
+        this.dateHeureArrivee = dateHeureArrivee;
+    }
 
-    public void ajouterPassager(Passager passager) {this.passagers.add(passager);}
+    public List<Passager> ListingPassager() {
+        List<Passager> passagers = new ArrayList<>();
+        for (Reservation r : reservations) {
+            if (!r.getStatut().equals("ANNULEE")) {
+                passagers.add(r.getPassager());
+            }
+        }
+        return passagers;
+    }
+
+    public void ajouterReservation(Reservation reservation) {
+        if (reservation != null && !reservations.contains(reservation)) {
+            reservations.add(reservation);
+        }
+    }
+
+    public void ajouterPersonnelCabine(PersonnelCabine personnelCabine) {
+        if (personnelCabine != null && !personnelsCabine.contains(personnelCabine)) {
+            personnelsCabine.add(personnelCabine);
+        }
+    }
+
+    public String getNumeroVol() {
+        return numeroVol;
+    }
+
+    public Aeroport getOrigine() {
+        return origine;
+    }
+
+    public Aeroport getDestination() {
+        return destination;
+    }
+
+    public LocalDateTime getDateHeureDepart() {
+        return dateHeureDepart;
+    }
+
+    public LocalDateTime getDateHeureArrivee() {
+        return dateHeureArrivee;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setAvion(Avion avion) {
+        this.avion = avion;
+    }
+
+    public void setPilote(Pilote pilote) {
+        this.pilote = pilote;
+    }
+
+    @Override
+    public String toString() {
+        return "Vol{" +
+                "numeroVol='" + numeroVol + '\'' +
+                ", origine=" + (origine != null ? origine.getNom() : "null") +
+                ", destination=" + (destination != null ? destination.getNom() : "null") +
+                ", dateHeureDepart=" + dateHeureDepart +
+                ", dateHeureArrivee=" + dateHeureArrivee +
+                ", etat='" + etat + '\'' +
+                ", avion=" + (avion != null ? avion.getImmatriculation() : "null") +
+                ", pilote=" + (pilote != null ? pilote.getNom() : "null") +
+                '}';
+    }
 }
