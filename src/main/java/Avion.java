@@ -12,6 +12,14 @@ public class Avion {
         this.capacite = capacite;
     }
 
+    public void affecterVol(Vol vol){
+        vol.setAvion(this);
+    }
+
+    public boolean verifierDisponibilite(String date){
+        return true;
+    }
+
     public int getImmatriculation() {
         return immatriculation;
     }

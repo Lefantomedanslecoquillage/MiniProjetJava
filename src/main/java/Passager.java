@@ -31,4 +31,7 @@ public class Passager extends Personne {
     public List<Reservation> obtenirReservations() {
         return reservations;
     }
+
+    public String getPasseport() {return passeport;}
+    public void setPasseport(String passeport) {this.passeport = passeport;}
 }

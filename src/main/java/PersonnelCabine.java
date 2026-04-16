@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,9 +6,9 @@ public class PersonnelCabine extends Employe{
     private String qualification;
     private List<Vol> volsaffectes = new ArrayList<>();
 
-    public PersonnelCabine(int identifiant, String nom, String adresse, int contact, int numeroEmploye, String dateEmbauche, String qualification){
+    public PersonnelCabine(String identifiant, String nom, String adresse, String contact, int numeroEmploye, String dateEmbauche){
         super(identifiant, nom, adresse, contact, numeroEmploye, dateEmbauche);
-        this.qualification = qualification;
+        this.qualification = "Personnel de cabine";
     }
 
     @Override
@@ -21,5 +22,4 @@ public class PersonnelCabine extends Employe{
     public List<Vol> obtenirVol() {
         return volsaffectes;
     }
-
 }
