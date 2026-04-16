@@ -11,6 +11,10 @@ public class Passager extends Personne {
     }
 
     public Reservation reserverVol(Vol vol) {
+        if (vol == null) {
+            return null;
+        }
+
         Reservation reservation = new Reservation(this, vol);
         reservation.confirmerReservation();
         reservations.add(reservation);
@@ -19,17 +23,34 @@ public class Passager extends Personne {
     }
 
     public boolean annulerReservation(String numeroReservation) {
-        for (Reservation r : reservations) {
-            if (r.getNumeroReservation().equals(numeroReservation)) {
-                r.annulerReservation();
-                return true;
-            }
+        Reservation reservation = obtenirReservation(numeroReservation);
+        if (reservation == null) {
+            return false;
         }
-        return false;
+
+        reservation.annulerReservation();
+        if (reservation.getVol() != null) {
+            reservation.getVol().supprimerReservation(reservation);
+        }
+        return true;
     }
 
     public List<Reservation> obtenirReservations() {
         return reservations;
+    }
+
+    public Reservation obtenirReservation(String numeroReservation) {
+        for (Reservation reservation : reservations) {
+            if (reservation.getNumeroReservation().equals(numeroReservation)) {
+                return reservation;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return ObtenirInfos() + ", Passeport: " + passeport;
     }
 
     public String getPasseport() {return passeport;}

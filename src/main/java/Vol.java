@@ -63,9 +63,28 @@ public class Vol {
         }
     }
 
+    public void supprimerReservation(Reservation reservation) {
+        if (reservation != null) {
+            reservations.remove(reservation);
+        }
+    }
+
     public void ajouterPersonnelCabine(PersonnelCabine personnelCabine) {
         if (personnelCabine != null && !personnelsCabine.contains(personnelCabine)) {
             personnelsCabine.add(personnelCabine);
+            personnelCabine.affecterVol(this);
+        }
+    }
+
+    public void affecterPilote(Pilote pilote) {
+        if (pilote != null) {
+            pilote.affecterVol(this);
+        }
+    }
+
+    public void affecterAvion(Avion avion) {
+        if (avion != null) {
+            avion.affecterVol(this);
         }
     }
 

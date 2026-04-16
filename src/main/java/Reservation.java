@@ -27,8 +27,12 @@ public class Reservation {
     }
 
     public void modifierReservation(Vol nouveauVol) {
-        if (nouveauVol != null) {
+        if (nouveauVol != null && this.vol != nouveauVol) {
+            if (this.vol != null) {
+                this.vol.supprimerReservation(this);
+            }
             this.vol = nouveauVol;
+            nouveauVol.ajouterReservation(this);
         }
     }
 
@@ -55,7 +59,7 @@ public class Reservation {
                 ", dateReservation=" + dateReservation +
                 ", statut='" + statut + '\'' +
                 ", passager=" + passager.getNom() +
-                ", vol=" + vol.getNumeroVol() +
+                ", vol=" + (vol != null ? vol.getNumeroVol() : "aucun") +
                 '}';
     }
 }

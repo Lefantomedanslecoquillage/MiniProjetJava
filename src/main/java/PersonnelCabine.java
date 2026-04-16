@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PersonnelCabine extends Employe{
     private String qualification;
-    private List<Vol> volsaffectes = new ArrayList<>();
+    private List<Vol> volsAffectes = new ArrayList<>();
 
     public PersonnelCabine(String identifiant, String nom, String adresse, String contact, int numeroEmploye, String dateEmbauche){
         super(identifiant, nom, adresse, contact, numeroEmploye, dateEmbauche);
@@ -17,9 +17,16 @@ public class PersonnelCabine extends Employe{
     }
 
     public void affecterVol(Vol vol){
-        volsaffectes.add(vol);
+        if (vol != null && !volsAffectes.contains(vol)) {
+            volsAffectes.add(vol);
+        }
     }
+
     public List<Vol> obtenirVol() {
-        return volsaffectes;
+        return volsAffectes;
+    }
+
+    public String getQualification() {
+        return qualification;
     }
 }

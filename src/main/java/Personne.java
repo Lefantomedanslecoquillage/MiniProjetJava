@@ -18,6 +18,11 @@ public class Personne {
                 ", Contact: " + contact;
     }
 
+    @Override
+    public String toString() {
+        return ObtenirInfos();
+    }
+
     public String getIdentifiant() {
         return identifiant;
     }
