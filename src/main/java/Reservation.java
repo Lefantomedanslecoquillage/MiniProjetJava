@@ -40,6 +40,10 @@ public class Reservation {
         return numeroReservation;
     }
 
+    public LocalDate getDateReservation() {
+        return dateReservation;
+    }
+
     public String getStatut() {
         return statut;
     }

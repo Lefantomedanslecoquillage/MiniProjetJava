@@ -112,6 +112,18 @@ public class Vol {
         return etat;
     }
 
+    public Avion getAvion() {
+        return avion;
+    }
+
+    public Pilote getPilote() {
+        return pilote;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
     public void setAvion(Avion avion) {
         this.avion = avion;
     }

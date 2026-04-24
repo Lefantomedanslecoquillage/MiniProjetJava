@@ -33,6 +33,14 @@ public class Aeroport {
         return nom;
     }
 
+    public String getVille() {
+        return ville;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public List<Vol> getVolsDepart() {
         return volsDepart;
     }
